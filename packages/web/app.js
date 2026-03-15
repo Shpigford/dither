@@ -351,7 +351,51 @@ function updateSliderLabels() {
   $('offsetYVal').textContent = $('offsetY').value;
 }
 
+// ============================================================
+// MOBILE DRAG HANDLE
+// ============================================================
+function initDragHandle() {
+  const handle = $('dragHandle');
+  const sidebar = $('sidebar');
+  let dragging = false;
+  let startY, startHeight;
+
+  function onStart(e) {
+    if (window.innerWidth > 768) return;
+    dragging = true;
+    startY = e.touches ? e.touches[0].clientY : e.clientY;
+    startHeight = sidebar.offsetHeight;
+    sidebar.style.transition = 'none';
+    document.body.style.userSelect = 'none';
+  }
+
+  function onMove(e) {
+    if (!dragging) return;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    const delta = startY - clientY;
+    const vh = window.innerHeight;
+    const newHeight = Math.min(Math.max(startHeight + delta, 80), vh * 0.85);
+    sidebar.style.height = newHeight + 'px';
+  }
+
+  function onEnd() {
+    if (!dragging) return;
+    dragging = false;
+    sidebar.style.transition = '';
+    document.body.style.userSelect = '';
+  }
+
+  handle.addEventListener('touchstart', onStart, { passive: true });
+  handle.addEventListener('mousedown', onStart);
+  window.addEventListener('touchmove', onMove, { passive: false });
+  window.addEventListener('mousemove', onMove);
+  window.addEventListener('touchend', onEnd);
+  window.addEventListener('mouseup', onEnd);
+}
+
 function init() {
+  initDragHandle();
+
   // File loading
   $('loadBtn').addEventListener('click', () => $('fileInput').click());
   $('fileInput').addEventListener('change', e => {

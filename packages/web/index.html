@@ -332,11 +332,82 @@ input[type="range"]::-webkit-slider-thumb {
 .sidebar::-webkit-scrollbar { width: 4px; }
 .sidebar::-webkit-scrollbar-track { background: transparent; }
 .sidebar::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+
+.drag-handle { display: none; }
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    order: 2;
+    width: 100%;
+    min-width: 100%;
+    height: 50vh;
+    min-height: 80px;
+    max-height: 85vh;
+    border-right: none;
+    border-top: 1px solid #1a1a1a;
+    padding-top: 0;
+    flex-shrink: 0;
+  }
+
+  .canvas-area {
+    order: 1;
+    flex: 1;
+    min-height: 15vh;
+    padding: 12px;
+  }
+
+  .drag-handle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0 6px;
+    cursor: grab;
+    touch-action: none;
+    position: sticky;
+    top: 0;
+    background: #0a0a0a;
+    z-index: 10;
+  }
+
+  .drag-handle-bar {
+    width: 36px;
+    height: 4px;
+    border-radius: 2px;
+    background: #444;
+  }
+
+  .drag-handle:active { cursor: grabbing; }
+  .drag-handle:active .drag-handle-bar { background: #666; }
+
+  .sidebar-title { margin-bottom: 12px; }
+
+  select { width: 110px; }
+
+  .slider-row .control-label { min-width: 48px; }
+
+  .palette-entry input[type="text"] { width: 56px; }
+
+  .btn-row {
+    position: sticky;
+    bottom: 0;
+    background: #0a0a0a;
+    padding-bottom: 12px;
+    margin-top: 12px;
+    z-index: 10;
+  }
+
+  .made-by { padding-bottom: 8px; }
+}
 </style>
 </head>
 <body>
 
-<aside class="sidebar">
+<aside class="sidebar" id="sidebar">
+  <div class="drag-handle" id="dragHandle"><div class="drag-handle-bar"></div></div>
   <div class="sidebar-title"><img src="favicon.svg" alt="">Dither</div>
 
   <div class="section-header">Source</div>
