@@ -282,7 +282,7 @@ function normalizePercentages(changedIdx) {
 
   const sum = currentPercentages.reduce((a, b) => a + b, 0);
   if (sum !== 100 && n > 0) {
-    currentPercentages[n - 1] += 100 - sum;
+    currentPercentages[n - 1] = Math.max(0, currentPercentages[n - 1] + (100 - sum));
   }
 }
 
