@@ -5,7 +5,7 @@
   "description": "Vector dither tool — web app + Illustrator plugin",
   "scripts": {
     "dev": "npm run build:web && npx serve dist/web",
-    "build:web": "mkdir -p dist/web && esbuild packages/web/app.js --bundle --outfile=dist/web/app.js --format=esm && cp packages/web/index.html packages/web/favicon.svg dist/web/",
+    "build:web": "mkdir -p dist/web && esbuild packages/web/app.js --bundle --outfile=dist/web/app.js --format=esm && cp packages/web/index.html packages/web/favicon.svg packages/web/meta.png dist/web/",
     "build:illustrator-ui": "esbuild packages/illustrator/ui/main.src.js --bundle --outfile=packages/illustrator/ui/main.js --format=iife",
     "build:illustrator": "npm run build:illustrator-ui && cd packages/illustrator && cmake -B build -G Xcode -DAI_SDK_PATH=/Users/joshpigford/Development/sdks/Illustrator && xcodebuild -project build/Dither.xcodeproj -configuration Release -quiet",
     "install:illustrator": "npm run build:illustrator && sudo cp -R packages/illustrator/build/Release/Dither.aip '/Applications/Adobe Illustrator 2026/Plug-ins.localized/' && rm -f ~/Library/Preferences/'Adobe Illustrator 30 Settings'/en_US/aggressivePlugincache_v2.bin ~/Library/Preferences/'Adobe Illustrator 30 Settings'/en_US/AggressiveDelayLoad-Plug-in\\ Cache && echo 'Installed. Restart Illustrator.'",

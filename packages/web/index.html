@@ -4,7 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dither — Vector Dither Tool</title>
+<meta name="description" content="Convert images and gradients into scalable vector dither patterns. Bayer, halftone, dots, lines, and more. Export as SVG or PNG.">
+<meta name="author" content="Josh Pigford">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dither — Vector Dither Tool">
+<meta property="og:description" content="Convert images and gradients into scalable vector dither patterns. Bayer, halftone, dots, lines, and more. Export as SVG or PNG.">
+<meta property="og:image" content="https://dither.neato.fun/meta.png">
+<meta property="og:url" content="https://dither.neato.fun">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@Shpigford">
+<meta name="twitter:title" content="Dither — Vector Dither Tool">
+<meta name="twitter:description" content="Convert images and gradients into scalable vector dither patterns. Bayer, halftone, dots, lines, and more. Export as SVG or PNG.">
+<meta name="twitter:image" content="https://dither.neato.fun/meta.png">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -299,6 +311,22 @@ input[type="range"]::-webkit-slider-thumb {
   outline-offset: -12px;
 }
 
+.made-by {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #1a1a1a;
+  font-size: 11px;
+  color: #444;
+  text-align: center;
+}
+
+.made-by a {
+  color: #666;
+  text-decoration: none;
+}
+
+.made-by a:hover { color: #ededed; }
+
 .hidden { display: none !important; }
 
 .sidebar::-webkit-scrollbar { width: 4px; }
@@ -448,6 +476,8 @@ input[type="range"]::-webkit-slider-thumb {
     <button class="btn btn-primary" id="exportSvg">Export SVG</button>
     <button class="btn btn-secondary" id="exportPng">Export PNG</button>
   </div>
+
+  <div class="made-by">Made by <a href="https://x.com/Shpigford" target="_blank">@Shpigford</a></div>
 </aside>
 
 <main class="canvas-area" id="canvasArea">

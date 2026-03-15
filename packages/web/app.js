@@ -433,9 +433,13 @@ function init() {
     }
   });
 
+  // Default to 1:1 GameBoy at 45°
+  $('aspectRatio').value = '1:1';
+  $('gradAngle').value = '45';
+  applyPreset('gameboy');
+
   updateVisibility();
   updateSliderLabels();
-  buildPaletteUI();
 
   // Auto-generate a gradient on startup
   doGenerateGradient();
